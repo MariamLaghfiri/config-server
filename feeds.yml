@@ -4,13 +4,36 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
 
 spring:
   data:
     redis:
       host: jdbc:redis://localhost/0
       port: 6379
+  cloud:
+    config:
+      enabled: false
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        automatic-transition-from-open-to-half-open-enabled: true
+        permittedNumberOfCallsInHalfOpenState: 4
+        waitDurationInOpenState: 10000
 
 server:
   port: 8085
 
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
