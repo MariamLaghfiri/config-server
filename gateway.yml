@@ -11,8 +11,6 @@ server:
   port: 8222
 
 spring:
-  main:
-    web-application-type: reactive
   security:
     oauth2:
       resourceserver:
