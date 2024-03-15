@@ -11,11 +11,6 @@ server:
   port: 8222
 
 spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwt-set-uri: http://localhost:7080/realms/social-network/protocol/openid-connect/certs
   cloud:
     gateway:
       routes:
